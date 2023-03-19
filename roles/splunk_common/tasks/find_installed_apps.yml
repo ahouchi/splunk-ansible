@@ -18,7 +18,7 @@
     recurse: no
     file_type: directory
   register: new_apps
-  debug: new_apps
+ 
 
 #- name: Determine installed apps
 #  set_fact:
