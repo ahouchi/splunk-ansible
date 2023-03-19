@@ -3,10 +3,10 @@
   ansible.builtin.debug:
     var: ansible_facts
 
-- name: Display all variables/facts known for a host
-  ansible.builtin.debug:
-    var: hostvars[inventory_hostname]
-    verbosity: 4
+#- name: Display all variables/facts known for a host
+#  ansible.builtin.debug:
+#    var: hostvars[inventory_hostname]
+#    verbosity: 4
 
 - name: Display splunk app path default
   ansible.builtin.debug:
@@ -15,18 +15,19 @@
 - name: Find all apps
   find:
     paths: "{{ _splunkapp_path }}"
-    recurse: yes
+    recurse: no
     file_type: directory
   register: new_apps
+  debug: new_apps
 
-- name: Determine installed apps
-  set_fact:
-    installed_apps: 
-      - appname : "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
-      - pathname: "{{ item.path }}"
-  with_items: "{{ new_apps.files }}"
-  loop_control:
-    label: "{{ item.path | basename }}"
+#- name: Determine installed apps
+#  set_fact:
+#    installed_apps: 
+#      - appname : "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
+#      - pathname: "{{ item.path }}"
+#  with_items: "{{ new_apps.files }}"
+#  loop_control:
+#    label: "{{ item.path | basename }}"
   
 
 - name: Display splunk app path default
