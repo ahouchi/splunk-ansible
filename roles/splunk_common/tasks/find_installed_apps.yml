@@ -19,20 +19,19 @@
     file_type: directory
   register: new_apps
  
-- name: Output all apps
-  debug: 
-    var: "{{ item.path }}"
-  with_items: "{{ news_apps.files }}"
+#- name: Output all apps
+#  debug: 
+#    var: "{{ item.path }}"
+#  with_items: "{{ news_apps.files }}"
     
 
-#- name: Determine installed apps
-#  set_fact:
-#    installed_apps: 
-#      - appname : "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
-#      - pathname: "{{ item.path }}"
-#  with_items: "{{ new_apps.files }}"
-#  loop_control:
-#    label: "{{ item.path | basename }}"
+- name: Determine installed apps
+  set_fact:
+    appname : "{{ item.file }}"
+    pathname: "{{ item.path }}"
+  with_items: "{{ new_apps.files }}"
+  loop_control:
+    label: "{{ item.path}}"
   
 
 #- name: Display splunk app path default
