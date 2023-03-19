@@ -30,8 +30,8 @@
 #    label: "{{ item.path | basename }}"
   
 
-- name: Display splunk app path default
-  ansible.builtin.debug:
-    var: "{{ installed_apps.appname}}"
-    var: "{{ installed_apps.pathname}}"
-  with_items: "{{ installed_apps}}"
+#- name: Display splunk app path default
+#  ansible.builtin.debug:
+#    var: "{{ installed_apps.appname}}"
+#    var: "{{ installed_apps.pathname}}"
+#  with_items: "{{ installed_apps}}"
