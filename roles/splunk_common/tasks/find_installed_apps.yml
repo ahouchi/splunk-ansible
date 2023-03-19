@@ -18,20 +18,29 @@
     recurse: no
     file_type: directory
   register: new_apps
+
+- name: Adding apps directory  to the LIST
+  set_fact:
+    AppsListe: "{{ AppsListe + [item.path]  }}"
+  with_items: "{{ new_apps.files }}"
  
 #- name: Output all apps
 #  debug: 
 #    var: "{{ item.path }}"
 #  with_items: "{{ news_apps.files }}"
     
-
-- name: Determine installed apps
+- name: Remove the path to only and retrieve folder name only
   set_fact:
-    appname : "{{ item.directory }}"
-    pathname: "{{ item.path }}"
-  with_items: "{{ new_apps.files }}"
-  loop_control:
-    label: "{{ item.path}}"
+    namespaces: "{{ namespaces + item | split('/') | last}}"
+  with_items: "{{ AppsListe }}"
+
+#- name: Determine installed apps
+#  set_fact:
+#    appname : "{{ item.directory }}"
+#    pathname: "{{ item.path }}"
+#  with_items: "{{ new_apps.files }}"
+#  loop_control:
+#    label: "{{ item.path}}"
   
 
 #- name: Display splunk app path default
