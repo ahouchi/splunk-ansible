@@ -15,7 +15,7 @@
 - name: Find all apps
   find:
     paths: "{{ _splunkapp_path }}"
-    recurse: no
+    recurse: yes
     file_type: directory
   register: new_apps
 
