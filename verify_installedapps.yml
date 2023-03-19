@@ -16,3 +16,4 @@
           - splunk_install: false
           - splunk_upgrade: false
           - first_run: false
+          - splunk.app_paths.default: "/opt/splunk/etc/apps"
