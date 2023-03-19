@@ -15,4 +15,4 @@
         vars:
           - splunk_install: false
           - splunk_upgrade: false
-          - first_run: false git checkout -b
+          - first_run: false
