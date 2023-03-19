@@ -5,7 +5,7 @@
   #environment: "{{ ansible_environment | default({}) }}"
 
   vars:
-    _splunkapp_path: "/opt/splunk/etc/apps"
+    _splunkapp_path: "/opt/splunk/etc/apps/"
   
   tasks:
       # These should only be run for the three roles that currently
