@@ -6,13 +6,13 @@
   tasks:
       # These should only be run for the three roles that currently
       # have multisite defined; cluster master, search head, and indexer
-      - name: Run role specific multisite configuration
+      - name: Run role splunk_common tasks
         include_role:
-          name: splunK_common
+          name: splunk_common
           tasks_from: find_installed_apps.yml 
         #when:
         #  - splunk.role is defined
         vars:
           - splunk_install: false
           - splunk_upgrade: false
-          - first_run: false
+          - first_run: false git checkout -b
