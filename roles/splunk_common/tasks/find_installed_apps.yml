@@ -21,7 +21,7 @@
  
 - name: Output all apps
   debug: 
-    msg: "{{ item.path }}"
+    var: "{{ item.path }}"
   with_items: "{{ news_apps.files }}"
     
 
