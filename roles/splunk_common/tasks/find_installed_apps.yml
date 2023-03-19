@@ -10,7 +10,7 @@
 
 - name: Display splunk app path default
   ansible.builtin.debug:
-    var: "{{ _splunkapp_path }}"
+    var: _splunkapp_path 
     
 - name: Find all apps
   find:
@@ -28,4 +28,4 @@
 
 - name: Display splunk app path default
   ansible.builtin.debug:
-    var: "{{ installed_apps }}"
+    var: installed_apps
