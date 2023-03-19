@@ -29,6 +29,5 @@
 - name: Display splunk app path default
   ansible.builtin.debug:
     var: "{{ installed_apps}}"
-    var: "{{ installed_apps.new_apps}}"
-    var: "{{ installed_apps.new_apps.files }}"
-  with_items: "{{ installed_apps }}"
+    var: "{{ installed_apps.files}}"
+  with_items: "{{ installed_apps}}"
