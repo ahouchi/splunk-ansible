@@ -27,7 +27,7 @@
 
 - name: Determine installed apps
   set_fact:
-    appname : "{{ item.files }}"
+    #appname : "{{ item.files }}"
     pathname: "{{ item.path }}"
   with_items: "{{ new_apps.files }}"
   loop_control:
