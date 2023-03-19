@@ -1,0 +1,18 @@
+---
+- name: Verify Installed apps on Splunk Entreprise 
+  hosts: all
+  gather_facts: true
+  environment: "{{ ansible_environment | default({}) }}"
+  tasks:
+      # These should only be run for the three roles that currently
+      # have multisite defined; cluster master, search head, and indexer
+      - name: Run role specific multisite configuration
+        include_role:
+          name: splunK_common
+          tasks_from: find_installed_apps.yml 
+        #when:
+        #  - splunk.role is defined
+        vars:
+          - splunk_install: false
+          - splunk_upgrade: false
+          - first_run: false
