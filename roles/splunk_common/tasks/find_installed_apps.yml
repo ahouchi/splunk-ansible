@@ -21,12 +21,16 @@
 
 - name: Determine installed apps
   set_fact:
-    installed_apps: "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
+    installed_apps: 
+      - appname : "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
+      - pathname: "{{ item.path }}"
   with_items: "{{ new_apps.files }}"
   loop_control:
     label: "{{ item.path | basename }}"
+  
 
 - name: Display splunk app path default
   ansible.builtin.debug:
-    var: "{{ installed_apps}}"
+    var: "{{ installed_apps.appname}}"
+    var: "{{ installed_apps.pathname}}"
   with_items: "{{ installed_apps}}"
