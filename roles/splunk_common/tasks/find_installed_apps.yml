@@ -10,18 +10,22 @@
 
 - name: Display splunk app path default
   ansible.builtin.debug:
-    var: "{{ splunk.app_paths.default }}"
+    var: "{{ _splunkapp_path }}"
     
 - name: Find all apps
   find:
-    paths: "{{ splunk.app_paths.default }}"
+    paths: "{{ _splunkapp_path }}"
     recurse: no
     file_type: directory
   register: new_apps
 
-#- name: Determine installed apps
-#  set_fact:
-#    installed_apps: "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
-#  with_items: "{{ new_apps.files }splunk.app_paths.default}"
-#  loop_control:
-#    label: "{{ item.path | basename }}"
+- name: Determine installed apps
+  set_fact:
+    installed_apps: "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
+  with_items: "{{ new_apps.files }_splunk_path}"
+  loop_control:
+    label: "{{ item.path | basename }}"
+
+- name: Display splunk app path default
+  ansible.builtin.debug:
+    var: "{{ installed_apps }}"

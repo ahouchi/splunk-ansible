@@ -2,7 +2,11 @@
 - name: Verify Installed apps on Splunk Entreprise 
   hosts: all
   gather_facts: true
-  environment: "{{ ansible_environment | default({}) }}"
+  #environment: "{{ ansible_environment | default({}) }}"
+
+  vars:
+    _splunkapp_path: "/opt/splunk/etc/apps"
+  
   tasks:
       # These should only be run for the three roles that currently
       # have multisite defined; cluster master, search head, and indexer
@@ -12,8 +16,4 @@
           tasks_from: find_installed_apps.yml 
         #when:
         #  - splunk.role is defined
-        vars:
-          - splunk_install: false
-          - splunk_upgrade: false
-          - first_run: false
-          - splunk.app_paths.default: "/opt/splunk/etc/apps"
+        
