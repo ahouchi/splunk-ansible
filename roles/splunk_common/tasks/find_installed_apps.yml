@@ -22,7 +22,7 @@
 - name: Determine installed apps
   set_fact:
     installed_apps: "{{ (installed_apps | default([]) + [ item.path | basename ] | difference(default_apps)) | unique }}"
-  with_items: "{{ new_apps.files }_splunkapp_path}"
+  with_items: "{{ new_apps.files }}"
   loop_control:
     label: "{{ item.path | basename }}"
 
