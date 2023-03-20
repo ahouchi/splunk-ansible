@@ -21,7 +21,8 @@
 
 - name: Adding apps directory  to the LIST
   set_fact:
-    appsliste: "{{ appsliste | default([])  + [item.path]  }}"
+    #appsliste: "{{ appsliste | default([])  + [item.path]  }}"
+    appsliste: "{{ item | basename  + [item.path]  }}"
   with_items: "{{ new_apps.files }}"
  
 #- name: Output all apps
@@ -32,7 +33,7 @@
 - name: Remove the path to only and retrieve folder name only
   set_fact:
     nameapp: "{{ item | basename }}"
-    nameapps_liste: "{{ nameapps_liste | default([]) + [nameapp] }}"
+    #nameapps_liste: "{{ nameapps_liste | default([]) + [nameapp] }}"
     #nameapps: "{{ item | split('') }}"
   with_items: "{{ new_apps.files }}"
  
