@@ -30,12 +30,6 @@
 #    var: "{{ item.path }}"
 #  with_items: "{{ news_apps.files }}"
     
-- name: Remove the path to only and retrieve folder name only
-  set_fact:
-    nameapp: "{{ item | basename }}"
-    #nameapps_liste: "{{ nameapps_liste | default([]) + [nameapp] }}"
-    #nameapps: "{{ item | split('') }}"
-  with_items: "{{ new_apps.files }}"
  
 #- name: Determine installed apps
 #  set_fact:
