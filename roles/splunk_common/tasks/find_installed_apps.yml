@@ -31,8 +31,8 @@
     
 - name: Remove the path to only and retrieve folder name only
   set_fact:
-    nameapps: "{{ item | split('/') }}"
-  with_items: "{{ appsliste }}"
+    nameapps: "{{ item | split('/') | last }}"
+  loop: "{{ appsliste }}"
 
 #- name: Determine installed apps
 #  set_fact:
