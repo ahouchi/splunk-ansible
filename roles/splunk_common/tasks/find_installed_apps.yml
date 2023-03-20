@@ -31,10 +31,10 @@
     
 - name: Remove the path to only and retrieve folder name only
   set_fact:
-    nameapps: "{{ item | basename }}"
+    nameapps: "{{ item | default([]) | basename  + [item] }}"
     #nameapps: "{{ item | split('') }}"
   with_items: "{{ appsliste }}"
-
+ 
 #- name: Determine installed apps
 #  set_fact:
 #    appname : "{{ item.directory }}"
