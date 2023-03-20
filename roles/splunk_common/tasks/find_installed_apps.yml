@@ -21,8 +21,8 @@
 
 - name: Adding apps directory  to the LIST
   set_fact:
-    #appsliste: "{{ appsliste | default([])  + [item.path]  }}"
-    appsliste: "{{ item | basename  + [item.path]  }}"
+    appsliste: "{{ appsliste | default([])  + [item.path | basename]  }}"
+    #appsliste: "{{ item | basename  + [item.path]  }}"
   with_items: "{{ new_apps.files }}"
  
 #- name: Output all apps
