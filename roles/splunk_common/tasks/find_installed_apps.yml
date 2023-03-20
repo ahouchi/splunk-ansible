@@ -34,7 +34,7 @@
     nameapp: "{{ item | basename }}"
     nameapps_liste: "{{ nameapps_liste | default([]) + [nameapp] }}"
     #nameapps: "{{ item | split('') }}"
-  with_items: "{{ appsliste }}"
+  with_items: "{{ new_apps.files }}"
  
 #- name: Determine installed apps
 #  set_fact:
