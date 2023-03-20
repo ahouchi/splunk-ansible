@@ -31,7 +31,8 @@
     
 - name: Remove the path to only and retrieve folder name only
   set_fact:
-    nameapps: "{{ item | basename  + [item] }}"
+    nameapp: "{{ item | basename }}"
+    nameapps_liste: "{{ nameapps_liste | default([]) + [item] }}"
     #nameapps: "{{ item | split('') }}"
   with_items: "{{ appsliste }}"
  
